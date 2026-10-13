@@ -1,0 +1,265 @@
+/* ====================================================================
+  CYBER-GLASS UI FRAMEWORK - EXTENDED EDITION
+  A comprehensive modular CSS library for cyberpunk & glassmorphism apps
+==================================================================== 
+*/
+
+:root {
+    /* Backgrounds & Surfaces */
+    --bg-main: #0a040f;
+    --bg-panel: #160b22;
+    
+    /* Glass Opacities */
+    --glass-light: rgba(45, 20, 65, 0.2);
+    --glass-base: rgba(26, 12, 38, 0.65);
+    --glass-heavy: rgba(15, 7, 22, 0.85);
+    --glass-frosted: rgba(255, 255, 255, 0.03);
+    
+    /* Expanded Brand Palette */
+    --accent-pink: #ff007f;
+    --accent-pink-hover: #fa2a73;
+    --accent-cyan: #00f0ff;
+    --accent-purple: #b026ff;
+    --accent-green: #00ff66;
+    --accent-orange: #ff3c00;
+    
+    /* Text & Borders */
+    --text-primary: #f4f4ff;
+    --text-secondary: #a0a0c0;
+    --text-muted: #5e5e7a;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: #361f54;
+    --border-glow: rgba(176, 38, 255, 0.3);
+    
+    /* UI Elements */
+    --btn-dark-bg: #1f1230;
+    
+    /* Shadows & Glows */
+    --shadow-glass: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --glow-pink: 0 0 20px rgba(255, 0, 127, 0.3);
+    --glow-cyan: 0 0 20px rgba(0, 240, 255, 0.2);
+    --glow-purple: 0 0 25px rgba(176, 38, 255, 0.35);
+}
+
+/* =========================================
+   1. BASE, RESET & SCROLLBAR
+========================================= */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { color-scheme: dark; scroll-behavior: smooth; }
+
+body {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Outfit', 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(255, 0, 127, 0.05), transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(176, 38, 255, 0.08), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.03), transparent 50%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-purple); }
+
+/* =========================================
+   2. LAYOUT & CONTAINERS
+========================================= */
+.utility-wrapper { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 24px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.flex-row { display: flex; gap: 16px; align-items: center; }
+.flex-col { display: flex; flex-direction: column; gap: 16px; }
+
+/* =========================================
+   3. GLASSMORPHISM CARDS (Extended)
+========================================= */
+.glass-card {
+    background: var(--glass-base);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-glass);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Card Themes */
+.glass-card-pink { border-top: 3px solid var(--accent-pink); }
+.glass-card-cyan { border-bottom: 3px solid var(--accent-cyan); }
+.glass-card-purple { 
+    border: 1px solid var(--border-glow);
+    box-shadow: var(--shadow-glass), inset 0 0 20px rgba(176, 38, 255, 0.05);
+}
+
+/* Holographic / Gradient Border Card */
+.glass-card-holo {
+    background: linear-gradient(var(--glass-heavy), var(--glass-heavy)) padding-box,
+                linear-gradient(135deg, var(--accent-pink), var(--accent-purple), var(--accent-cyan)) border-box;
+    border: 2px solid transparent;
+}
+
+.glass-card-interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glass), var(--glow-purple);
+    border-color: var(--accent-purple);
+}
+
+.glass-panel-frosted {
+    background: var(--glass-frosted);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   4. TYPOGRAPHY & TEXT EFFECTS
+========================================= */
+.font-mono { font-family: 'Courier New', Courier, monospace; letter-spacing: -0.5px; }
+
+.title-main { text-align: center; font-size: 2.5rem; color: var(--text-primary); font-weight: 700; }
+.subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem; }
+
+/* Gradient Texts */
+.text-gradient-pink { background: linear-gradient(90deg, var(--accent-pink), #ff7eb3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient-cyan { background: linear-gradient(90deg, var(--accent-cyan), #7efaff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gradient-purple { background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Neon Glow Texts */
+.text-neon-pink { color: #fff; text-shadow: 0 0 10px var(--accent-pink), 0 0 20px var(--accent-pink); }
+.text-neon-cyan { color: #fff; text-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan); }
+
+/* Cyberpunk Glitch Effect */
+.text-glitch {
+    position: relative;
+    display: inline-block;
+    color: white;
+}
+.text-glitch::before, .text-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+.text-glitch::before { left: 2px; text-shadow: -2px 0 var(--accent-pink); animation: glitch-anim-1 2s infinite linear alternate-reverse; }
+.text-glitch::after { left: -2px; text-shadow: -2px 0 var(--accent-cyan); animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+
+/* =========================================
+   5. BUTTONS (Extended)
+========================================= */
+.btn {
+    padding: 14px 28px; border-radius: 12px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none; display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+/* Solid Variants */
+.btn-pink { background: var(--accent-pink); color: white; box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3); }
+.btn-pink:hover:not(:disabled) { background: var(--accent-pink-hover); box-shadow: 0 0 25px rgba(255, 0, 127, 0.6); transform: translateY(-2px); }
+
+.btn-purple { background: var(--accent-purple); color: white; box-shadow: 0 4px 15px rgba(176, 38, 255, 0.3); }
+.btn-purple:hover:not(:disabled) { background: #c24dff; box-shadow: 0 0 25px rgba(176, 38, 255, 0.6); transform: translateY(-2px); }
+
+/* Outline / Neon Variants */
+.btn-outline-cyan { background: transparent; color: var(--accent-cyan); border: 2px solid var(--accent-cyan); }
+.btn-outline-cyan:hover:not(:disabled) { background: rgba(0, 240, 255, 0.1); box-shadow: 0 0 15px rgba(0, 240, 255, 0.4) inset, 0 0 15px rgba(0, 240, 255, 0.2); }
+
+.btn-outline-pink { background: transparent; color: var(--accent-pink); border: 2px solid var(--accent-pink); }
+.btn-outline-pink:hover:not(:disabled) { background: rgba(255, 0, 127, 0.1); box-shadow: 0 0 15px rgba(255, 0, 127, 0.4) inset, 0 0 15px rgba(255, 0, 127, 0.2); }
+
+/* Gradient Button */
+.btn-gradient { background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink)); color: white; border: none; }
+.btn-gradient:hover:not(:disabled) { background: linear-gradient(45deg, #c24dff, var(--accent-pink-hover)); box-shadow: var(--glow-purple); transform: scale(1.02); }
+
+/* =========================================
+   6. UI COMPONENTS (Badges, Alerts, Progress)
+========================================= */
+/* Badges */
+.badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.badge-pro { background: var(--accent-purple); color: white; box-shadow: 0 0 10px rgba(176, 38, 255, 0.4); }
+.badge-beta { background: rgba(0, 240, 255, 0.1); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+.badge-new { background: rgba(255, 0, 127, 0.1); color: var(--accent-pink); border: 1px solid var(--accent-pink); }
+
+/* Alerts / Notices */
+.alert { padding: 16px 20px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
+.alert-info { background: rgba(0, 240, 255, 0.05); border-left: 4px solid var(--accent-cyan); color: var(--text-primary); }
+.alert-success { background: rgba(0, 255, 102, 0.05); border-left: 4px solid var(--accent-green); color: var(--text-primary); }
+.alert-warning { background: rgba(255, 60, 0, 0.05); border-left: 4px solid var(--accent-orange); color: var(--text-primary); }
+
+/* Progress Bar */
+.progress-container { width: 100%; height: 8px; background: var(--bg-panel); border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong); }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); width: 0%; transition: width 0.4s ease; box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); }
+
+/* Toggle Switch */
+.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--btn-dark-bg); transition: .4s; border-radius: 34px; border: 1px solid var(--border-strong); }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: var(--text-secondary); transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: rgba(176, 38, 255, 0.3); border-color: var(--accent-purple); }
+input:checked + .slider:before { transform: translateX(24px); background-color: var(--accent-purple); box-shadow: 0 0 10px var(--accent-purple); }
+
+/* =========================================
+   7. FORMS & TEXT UTILITIES
+========================================= */
+.input-glass, .textarea-glass, .select-glass {
+    width: 100%; padding: 16px; background: var(--bg-panel); color: var(--text-primary);
+    border: 1px solid var(--border-strong); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;
+}
+.input-glass:focus, .textarea-glass:focus, .select-glass:focus {
+    outline: none; border-color: var(--accent-purple); box-shadow: 0 0 15px rgba(176, 38, 255, 0.2); background: rgba(0, 0, 0, 0.6);
+}
+.textarea-glass { min-height: 120px; resize: vertical; line-height: 1.6; }
+.textarea-mono { font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; color: #e2d9f3; }
+
+/* Range Slider */
+.range-glass { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 5px; background: var(--border-strong); outline: none; }
+.range-glass::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-pink); cursor: pointer; box-shadow: 0 0 10px var(--accent-pink); transition: 0.2s; }
+.range-glass::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+/* =========================================
+   8. ANIMATIONS & KEYFRAMES
+========================================= */
+@keyframes pulse-glow-purple {
+    0% { box-shadow: 0 0 15px rgba(176, 38, 255, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(176, 38, 255, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(176, 38, 255, 0.2); }
+}
+.animate-pulse { animation: pulse-glow-purple 2.5s infinite ease-in-out; }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float { animation: float 4s infinite ease-in-out; }
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: var(--accent-cyan); animation: spin 1s linear infinite; }
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    20% { clip-path: inset(60% 0 10% 0); }
+    40% { clip-path: inset(40% 0 50% 0); }
+    60% { clip-path: inset(80% 0 5% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(30% 0 40% 0); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(30% 0 20% 0); }
+    40% { clip-path: inset(70% 0 10% 0); }
+    60% { clip-path: inset(20% 0 50% 0); }
+    80% { clip-path: inset(90% 0 5% 0); }
+    100% { clip-path: inset(40% 0 30% 0); }
+}
